@@ -1,10 +1,8 @@
 package com.devfleming.employees.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * Role class of the employees.
@@ -12,13 +10,15 @@ import lombok.NoArgsConstructor;
  * @author Rafael Fleming
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
+@EntityListeners(value = AuditingEntityListener.class)
 @Table(name = "EMPLOYEE_ROLE")
-public class Role {
+public class Role extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
