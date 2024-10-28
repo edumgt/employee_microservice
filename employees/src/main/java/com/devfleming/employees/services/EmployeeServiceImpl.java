@@ -2,6 +2,8 @@ package com.devfleming.employees.services;
 
 import com.devfleming.employees.domain.dto.EmployeeDto;
 import com.devfleming.employees.domain.entities.Employee;
+import com.devfleming.employees.domain.exceptions.EmployeeAlreadyExistsException;
+import com.devfleming.employees.domain.exceptions.EmployeeNotFoundException;
 import com.devfleming.employees.domain.usecases.EmployeeService;
 import com.devfleming.employees.mappers.EmployeeMapper;
 import com.devfleming.employees.repositories.EmployeeRepository;
@@ -29,11 +31,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Optional<Employee> employeeByEmail = Optional.ofNullable(employeeRepository.fetchEmployeeByEmail(employeeDto.getEmail()));
 
-        if(employeeByEmail.isPresent()) throw new RuntimeException("The given e-mail is already in use");
+        if(employeeByEmail.isPresent()) throw new EmployeeAlreadyExistsException("The given e-mail is already in use");
 
         Optional<Employee> employeeByCellphone = Optional.ofNullable(employeeRepository.fetchEmployeeByCellphone(employeeDto.getCellphoneNumber()));
 
-        if(employeeByCellphone.isPresent()) throw new RuntimeException("The given cellphone is already in use");
+        if(employeeByCellphone.isPresent()) throw new EmployeeAlreadyExistsException("The given cellphone is already in use");
 
         return employeeRepository.save(EmployeeMapper.mapToEmployee(employeeDto));
     }
@@ -43,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Optional<Employee> savedEmployee = employeeRepository.findById(employeeId);
 
-        if (savedEmployee.isEmpty()) throw new RuntimeException();
+        if (savedEmployee.isEmpty()) throw new EmployeeNotFoundException("Did not found the employee by id: " + employeeId);
 
         Employee employeeToUpdate = savedEmployee.get();
 
@@ -64,7 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Optional<Employee> savedEmployee = employeeRepository.findById(employeeId);
 
-        if (savedEmployee.isEmpty()) throw new RuntimeException("Did not found the employee with the id: " + employeeId);
+        if (savedEmployee.isEmpty()) throw new EmployeeNotFoundException("Did not found the employee with the id: " + employeeId);
 
         return savedEmployee.get();
     }
@@ -74,7 +76,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Optional<Employee> savedEmployee = Optional.ofNullable(employeeRepository.fetchEmployeeByEmail(employeeEmail));
 
-        if (savedEmployee.isEmpty()) throw new RuntimeException("Did not found the employee with the e-mail: " + employeeEmail);
+        if (savedEmployee.isEmpty()) throw new EmployeeNotFoundException("Did not found the employee with the e-mail: " + employeeEmail);
 
         return savedEmployee.get();
     }
@@ -84,7 +86,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Optional<Employee> savedEmployee = Optional.ofNullable(employeeRepository.fetchEmployeeByCellphone(employeeCellphone));
 
-        if (savedEmployee.isEmpty()) throw new RuntimeException("Did not found the employee with the cellphone: " + employeeCellphone);
+        if (savedEmployee.isEmpty()) throw new EmployeeNotFoundException("Did not found the employee with the cellphone: " + employeeCellphone);
 
         return savedEmployee.get();
     }
@@ -94,7 +96,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         List<Employee> employeeList = employeeRepository.findAll();
 
-        if (employeeList.isEmpty()) throw new RuntimeException("There are no registered employees");
+        if (employeeList.isEmpty()) throw new EmployeeNotFoundException("There are no registered employees");
 
         return employeeList;
     }
@@ -104,7 +106,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         Optional<Employee> savedEmployee = employeeRepository.findById(employeeId);
 
-        if (savedEmployee.isEmpty()) throw new RuntimeException("Did not found the employee with the id: " + employeeId);
+        if (savedEmployee.isEmpty()) throw new EmployeeNotFoundException("Did not found the employee with the id: " + employeeId);
 
         Employee employeeToInactivate = savedEmployee.get();
 
