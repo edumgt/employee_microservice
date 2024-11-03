@@ -8,7 +8,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * Defines the employee entity.
  * @author Rafael Fleming
  */
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor

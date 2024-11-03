@@ -9,7 +9,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * Contains the role id, role name and if the role is active or not.
  * @author Rafael Fleming
  */
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
