@@ -28,5 +28,5 @@ public class Role extends BaseEntity{
     private String roleName;
 
     @Column(name = "ACTIVE", nullable = false)
-    private boolean active;
+    private Character active;
 }
