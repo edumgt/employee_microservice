@@ -57,47 +57,47 @@ public class EmployeeController {
     /**
      * Fetch a single employee with its ID.
      * @param employeeId The ID of the employee saved in database.
-     * @return Response with the employee saved, and the Http Status 201.
+     * @return Response with the employee saved, and the Http Status 200.
      */
     @GetMapping("/employee")
-    public ResponseEntity<Employee> fetchEmployeeById(@RequestBody Long employeeId){
+    public ResponseEntity<Employee> fetchEmployeeById(@RequestParam Long employeeId){
         return ResponseEntity
-                .status(HttpStatus.FOUND)
+                .status(HttpStatus.OK)
                 .body(employeeService.fetchEmployeeById(employeeId));
     }
 
     /**
      * Fetch a single employee with its email.
      * @param email The email of the employee saved in database.
-     * @return Response with the employee saved, and the Http Status 201.
+     * @return Response with the employee saved, and the Http Status 200.
      */
     @GetMapping("/employee")
-    public ResponseEntity<Employee> fetchEmployeeByEmail(@RequestBody String email){
+    public ResponseEntity<Employee> fetchEmployeeByEmail(@RequestParam String email){
         return ResponseEntity
-                .status(HttpStatus.FOUND)
+                .status(HttpStatus.OK)
                 .body(employeeService.fetchEmployeeByEmail(email));
     }
 
     /**
      * Fetch a single employee with its cellphone.
      * @param cellphone The cellphone of the employee saved in database.
-     * @return Response with the employee saved, and the Http Status 201.
+     * @return Response with the employee saved, and the Http Status 200.
      */
     @GetMapping("/employee")
-    public ResponseEntity<Employee> fetchEmployeeByCellphone(@RequestBody String cellphone){
+    public ResponseEntity<Employee> fetchEmployeeByCellphone(@RequestParam String cellphone){
         return ResponseEntity
-                .status(HttpStatus.FOUND)
+                .status(HttpStatus.OK)
                 .body(employeeService.fetchEmployeeByCellphone(cellphone));
     }
 
     /**
      * Fetch all employees saved in database with no filters.
-     * @return List of all employees, and the Http Status 201.
+     * @return List of all employees, and the Http Status 200.
      */
     @GetMapping("/employee/list")
     public ResponseEntity<List<Employee>> fetchEmployeesList(){
         return ResponseEntity
-                .status(HttpStatus.FOUND)
+                .status(HttpStatus.OK)
                 .body(employeeService.fetchEmployeesList());
     }
 
@@ -107,7 +107,7 @@ public class EmployeeController {
      * @return Response with the Http Status 200 and a 200 Message ("Request processed successfully")
      */
     @PostMapping("/employee/inactivate")
-    public ResponseEntity<ResponseDto> inactivateEmployee(@RequestBody Long employeeId){
+    public ResponseEntity<ResponseDto> inactivateEmployee(@RequestParam Long employeeId){
         employeeService.inactivateEmployee(employeeId);
         return ResponseEntity
                 .status(HttpStatus.OK)
