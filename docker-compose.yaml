@@ -1,0 +1,27 @@
+services:
+
+  employee_database:
+    image: mysql:latest
+    container_name: employee_database
+    environment:
+      MYSQL_ROOT_PASSWORD: employee
+      MYSQL_DATABASE: EMPLOYEE_DATABASE
+      MYSQL_USER: EMPLOYEE#753
+      MYSQL_PASSWORD: EMPLOYEE#753
+    ports:
+      - "3307:3306"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    healthcheck:
+      test: [ "CMD","mysqladmin","ping","-h","employee_database" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    volumes:
+      - employee_data:/var/lib/employee_data
+
+volumes:
+  employee_data:
