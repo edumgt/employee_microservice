@@ -23,5 +23,30 @@ services:
     volumes:
       - employee_data:/var/lib/employee_data
 
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    restart: always
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    command:
+      - --config.file=/etc/prometheus/prometheus.yaml
+    volumes:
+      - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=EMPLOYEE#753
+      - GF_USERS_ALLOW_SIGN_UP=false
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
 volumes:
   employee_data:
+  grafana-storage:
