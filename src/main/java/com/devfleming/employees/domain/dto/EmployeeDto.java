@@ -20,7 +20,7 @@ public class EmployeeDto {
 
     private String rg;
 
-    private Role roleId;
+    private Role role;
 
     private String email;
 
