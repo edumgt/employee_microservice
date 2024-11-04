@@ -15,6 +15,7 @@ Este projeto é um microserviço para gerir funcionários e todas as suas respon
 - **Swagger**: Documentação dos DTO's, descriçao do projeto e dos endpoints. 
 - **Conceitos**: Clean Code, Clean Architecture, REST.
 - **JPA Auditing**: Controle de criação e atualização das entidades automática.
+- **GitHub Actions**: Integração contínua automatizada para testar, compilar e gerar uma imagem para o Docker Hub.
 
 ## Funcionalidades
 
