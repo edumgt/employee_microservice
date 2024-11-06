@@ -44,6 +44,7 @@ http://localhost:8080/swagger-ui/index.html#
 ### Employee:
 - **POST** /api/v1/employee/create-employee: Cria um novo funcionário.
 - **PUT** /api/v1/employee/profile/{employeeId}: Atualiza um funcionário existente.
+- **GET** /api/v1/employee/list: Busca todos os funcionários salvos no banco de dados e retorna uma lista com os registros.
 - **GET** /api/v1/employee: Buscar um funcionário pelo ID, e retorna seu objeto salvo.
 - **GET** /api/v1/employee/email: Buscar um funcionário pelo seu email, e retorna seu objeto salvo.
 - **GET** /api/v1/employee/cellphone: Buscar um funcionário pelo seu celular, e retorna seu objeto salvo.
