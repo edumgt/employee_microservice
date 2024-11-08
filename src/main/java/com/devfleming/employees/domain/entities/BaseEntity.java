@@ -19,21 +19,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
 
     @CreatedDate
-    @Column(name = "CREATED_AT", updatable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @CreatedBy
-    @Column(name = "CREATED_BY", updatable = false)
+    @Column(name = "created_by", updatable = false)
     private String createdBy;
 
     @LastModifiedDate
-    @Column(name = "UPDATED_AT", insertable = false)
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @LastModifiedBy
-    @Column(name = "UPDATED_BY", insertable = false)
+    @Column(name = "updated_by")
     private String updatedBy;
 }
