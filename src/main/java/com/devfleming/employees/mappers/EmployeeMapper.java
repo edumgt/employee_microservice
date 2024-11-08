@@ -15,15 +15,15 @@ public class EmployeeMapper {
      * @return Employee entity with the Employee DTO information.
      */
     public static Employee mapToEmployee(EmployeeDto employeeDto){
+
         return Employee.builder()
                 .firstName(employeeDto.getFirstName())
                 .lastName(employeeDto.getLastName())
                 .cpf(employeeDto.getCpf())
                 .rg(employeeDto.getRg())
-                .roleId(employeeDto.getRole())
-                .email(employeeDto.getEmail())
+                .employeeEmail(employeeDto.getEmail())
                 .areaCode(employeeDto.getAreaCode())
-                .cellphoneNumber(employeeDto.getCellphoneNumber())
+                .employeeCellphone(employeeDto.getCellphoneNumber())
                 .active(employeeDto.getActive())
                 .build();
     }
@@ -34,15 +34,15 @@ public class EmployeeMapper {
      * @return Employee Data Transfer Object with the Employee information.
      */
     public static EmployeeDto mapToEmployeeDto(Employee employee){
+
         return EmployeeDto.builder()
                 .firstName(employee.getFirstName())
                 .lastName(employee.getLastName())
                 .cpf(employee.getCpf())
                 .rg(employee.getRg())
-                .role(employee.getRoleId())
-                .email(employee.getEmail())
+                .email(employee.getEmployeeEmail())
                 .areaCode(employee.getAreaCode())
-                .cellphoneNumber(employee.getCellphoneNumber())
+                .cellphoneNumber(employee.getEmployeeCellphone())
                 .active(employee.getActive())
                 .build();
     }
