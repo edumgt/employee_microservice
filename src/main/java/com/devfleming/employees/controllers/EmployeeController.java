@@ -6,6 +6,7 @@ import com.devfleming.employees.domain.entities.Employee;
 import com.devfleming.employees.domain.usecases.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,13 @@ import static com.devfleming.employees.constants.EmployeeConstants.*;
  * This controller handle HTTP requests to create, read, update and inactivate the employee entity.
  * @author Rafael Fleming
  */
-@RestController(value = "/api/v1")
+@RestController
+@RequestMapping(path = "/api/v1", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 @ControllerAdvice
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     /**
      * Request the creation of a new employee.
@@ -32,7 +34,7 @@ public class EmployeeController {
      * saying "Employee created successfully"
      */
     @PostMapping("/employee/create-employee")
-    public ResponseEntity<ResponseDto> createNewEmployee(EmployeeDto employeeDto){
+    public ResponseEntity<ResponseDto> createNewEmployee(@RequestBody EmployeeDto employeeDto){
         employeeService.createNewEmployee(employeeDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -71,7 +73,7 @@ public class EmployeeController {
      * @param email The email of the employee saved in database.
      * @return Response with the employee saved, and the Http Status 200.
      */
-    @GetMapping("/employee")
+    @GetMapping("/employee/email")
     public ResponseEntity<Employee> fetchEmployeeByEmail(@RequestParam String email){
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -83,7 +85,7 @@ public class EmployeeController {
      * @param cellphone The cellphone of the employee saved in database.
      * @return Response with the employee saved, and the Http Status 200.
      */
-    @GetMapping("/employee")
+    @GetMapping("/employee/cellphone")
     public ResponseEntity<Employee> fetchEmployeeByCellphone(@RequestParam String cellphone){
         return ResponseEntity
                 .status(HttpStatus.OK)
