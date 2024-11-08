@@ -4,49 +4,49 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+
 /**
  * Defines the employee entity.
  * @author Rafael Fleming
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 @EntityListeners(value = AuditingEntityListener.class)
-@Table(name = "EMPLOYEE")
+@Table(name = "employee")
 public class Employee extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EMPLOYEE_ID", unique = true, nullable = false, updatable = false)
+    @Column(name = "employee_id", unique = true, nullable = false, updatable = false)
     private Long employeeId;
 
-    @Column(name = "FIRST_NAME", nullable = false, length = 30)
+    @Column(name = "first_name", nullable = false, length = 30)
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false, length = 60)
+    @Column(name = "last_name", nullable = false, length = 60)
     private String lastName;
 
-    @Column(name = "CPF", unique = true, nullable = false, length = 11)
+    @Column(name = "cpf", unique = true, nullable = false, length = 11)
     private String cpf;
 
-    @Column(name = "RG", unique = true, nullable = false, length = 9)
+    @Column(name = "rg", unique = true, nullable = false, length = 9)
     private String rg;
 
-    @Column(name = "EMPLOYEE_ROLE_ID", length = 50)
-    private Role roleId;
+    @Column(name = "employee_email", unique = true, nullable = false, length = 60)
+    private String employeeEmail;
 
-    @Column(name = "EMPLOYEE_EMAIL", unique = true, nullable = false, length = 60)
-    private String email;
-
-    @Column(name = "AREA_CODE", nullable = false, length = 3)
+    @Column(name = "area_code", nullable = false, length = 3)
     private String areaCode;
 
-    @Column(name = "CELLPHONE_NUMBER", unique = true, nullable = false, length = 9)
-    private String cellphoneNumber;
+    @Column(name = "cellphone_number", unique = true, nullable = false, length = 9)
+    private String employeeCellphone;
 
-    @Column(name = "ACTIVE", nullable = false, length = 1)
+    @Column(name = "active", nullable = false, length = 1)
     private Character active;
 }

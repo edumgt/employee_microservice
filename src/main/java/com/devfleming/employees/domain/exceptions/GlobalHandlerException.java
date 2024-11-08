@@ -1,6 +1,10 @@
 package com.devfleming.employees.domain.exceptions;
 
 import com.devfleming.employees.domain.dto.ErrorResponseDto;
+import com.devfleming.employees.domain.exceptions.employee.CouldNotCreateEmployeeException;
+import com.devfleming.employees.domain.exceptions.employee.CouldNotUpdateEmployeeException;
+import com.devfleming.employees.domain.exceptions.employee.EmployeeAlreadyExistsException;
+import com.devfleming.employees.domain.exceptions.employee.EmployeeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

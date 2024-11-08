@@ -2,8 +2,8 @@ package com.devfleming.employees.services;
 
 import com.devfleming.employees.domain.dto.EmployeeDto;
 import com.devfleming.employees.domain.entities.Employee;
-import com.devfleming.employees.domain.exceptions.EmployeeAlreadyExistsException;
-import com.devfleming.employees.domain.exceptions.EmployeeNotFoundException;
+import com.devfleming.employees.domain.exceptions.employee.EmployeeAlreadyExistsException;
+import com.devfleming.employees.domain.exceptions.employee.EmployeeNotFoundException;
 import com.devfleming.employees.domain.usecases.EmployeeService;
 import com.devfleming.employees.mappers.EmployeeMapper;
 import com.devfleming.employees.repositories.EmployeeRepository;
@@ -48,7 +48,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         employeeDto.setActive('A');
 
-        return employeeRepository.save(EmployeeMapper.mapToEmployee(employeeDto));
+        Employee employeeToSave = EmployeeMapper.mapToEmployee(employeeDto);
+
+        return employeeRepository.save(employeeToSave);
     }
 
     /**
@@ -72,10 +74,9 @@ public class EmployeeServiceImpl implements EmployeeService{
         savedEmployee.setLastName(employeeDto.getLastName());
         savedEmployee.setCpf(employeeDto.getCpf());
         savedEmployee.setRg(employeeDto.getRg());
-        savedEmployee.setRoleId(employeeDto.getRole());
-        savedEmployee.setEmail(employeeDto.getEmail());
+        savedEmployee.setEmployeeEmail(employeeDto.getEmail());
         savedEmployee.setAreaCode(employeeDto.getAreaCode());
-        savedEmployee.setCellphoneNumber(employeeDto.getCellphoneNumber());
+        savedEmployee.setEmployeeCellphone(employeeDto.getCellphoneNumber());
 
         return employeeRepository.save(savedEmployee);
     }

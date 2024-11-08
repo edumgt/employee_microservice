@@ -1,7 +1,8 @@
 package com.devfleming.employees.domain.dto;
 
-import com.devfleming.employees.domain.entities.Role;
 import lombok.*;
+
+import java.util.Set;
 
 /**
  * Employee Data Transfer Object for creation, updating and other process related to the employee entity.
@@ -19,8 +20,6 @@ public class EmployeeDto {
     private String cpf;
 
     private String rg;
-
-    private Role role;
 
     private String email;
 
