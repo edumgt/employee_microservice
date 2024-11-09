@@ -43,4 +43,4 @@ jobs:
 
     - name: Push image to docker hub
       run: |
-        docker push devfleming/EMPLOYEE_MICROSERVICE:${{ github.sha }}
+        docker push devfleming/employees:latest
