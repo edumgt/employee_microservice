@@ -24,7 +24,6 @@ public class EmployeeMapper {
                 .employeeEmail(employeeDto.getEmail())
                 .areaCode(employeeDto.getAreaCode())
                 .employeeCellphone(employeeDto.getCellphoneNumber())
-                .active(employeeDto.getActive())
                 .build();
     }
 
@@ -43,7 +42,6 @@ public class EmployeeMapper {
                 .email(employee.getEmployeeEmail())
                 .areaCode(employee.getAreaCode())
                 .cellphoneNumber(employee.getEmployeeCellphone())
-                .active(employee.getActive())
                 .build();
     }
 }
