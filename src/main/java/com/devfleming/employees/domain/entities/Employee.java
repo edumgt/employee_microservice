@@ -32,10 +32,10 @@ public class Employee extends BaseEntity{
     @Column(name = "last_name", nullable = false, length = 60)
     private String lastName;
 
-    @Column(name = "cpf", unique = true, nullable = false, length = 11)
+    @Column(name = "cpf", unique = true, nullable = false, length = 14)
     private String cpf;
 
-    @Column(name = "rg", unique = true, nullable = false, length = 9)
+    @Column(name = "rg", unique = true, nullable = false, length = 12)
     private String rg;
 
     @Column(name = "employee_email", unique = true, nullable = false, length = 60)
