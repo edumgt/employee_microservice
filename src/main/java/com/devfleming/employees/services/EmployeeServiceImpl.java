@@ -46,11 +46,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 
         if(employeeByCellphone.isPresent()) throw new EmployeeAlreadyExistsException("The given cellphone is already in use");
 
-        employeeDto.setActive('A');
+        Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
 
-        Employee employeeToSave = EmployeeMapper.mapToEmployee(employeeDto);
+        employee.setActive('A');
 
-        return employeeRepository.save(employeeToSave);
+        return employeeRepository.save(employee);
     }
 
     /**
@@ -119,7 +119,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Cacheable(value = "fetchEmployeeByCellphoneCache", key = "#employeeCellphone")
     public Employee fetchEmployeeByCellphone(String employeeCellphone) {
 
-        return employeeRepository.fetchEmployeeByEmail(employeeCellphone)
+        return employeeRepository.fetchEmployeeByCellphone(employeeCellphone)
                 .orElseThrow(() -> new EmployeeNotFoundException("Did not found the employee by cellphone: " + employeeCellphone));
     }
 
