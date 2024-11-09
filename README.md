@@ -14,6 +14,7 @@ Este projeto é um microserviço para gerir funcionários e todas as suas respon
 - **Docker-compose**: Foi adicionado um docker-compose para a criação do banco de dados.
 - **Swagger**: Documentação dos DTO's, descriçao do projeto e dos endpoints. 
 - **Conceitos**: Clean Code, Clean Architecture, REST.
+- **Flyway**: Versionamento do banco de dados com Flyway.
 - **JPA Auditing**: Controle de criação e atualização das entidades automática.
 - **GitHub Actions**: Integração contínua automatizada para testar, compilar e gerar uma imagem para o Docker Hub.
 
